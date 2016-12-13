@@ -64,4 +64,4 @@ for pl in payloads:
                     print('Sequence Number is incorrect')
                 sock.sendto(UDP_Packet, (UDP_IP, UDP_PORT))  # retransmit packet. end of inner loop.
         except socket.timeout:
-            print("socket timeout.  retransmitting")
+            print("socket timed out.  retransmitting...")
