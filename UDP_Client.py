@@ -4,10 +4,10 @@
 
 # Sends data to a server by implementing a reliable data transfer protocol
 
-import binascii
+# import binascii
 import socket
 import struct
-import sys
+# import sys
 import hashlib
 
 UDP_IP = "127.0.0.1"
@@ -38,7 +38,7 @@ for pl in payloads:
             print("\n\nSending message:\t", values)
             print("Sending to:\t\t\t", (UDP_IP, UDP_PORT))
             sock = socket.socket(socket.AF_INET,  # Internet
-                         socket.SOCK_DGRAM)  # UDP
+                                        socket.SOCK_DGRAM)  # UDP
             sock.sendto(UDP_Packet, (UDP_IP, UDP_PORT))  # Send the UDP Packet
             sock.settimeout(0.009)  # set the timer
 
@@ -59,9 +59,9 @@ for pl in payloads:
                 packetAcknowledged = True  # ends inner loop.  next packet will be sent in next iteration of outer loop
             else:
                 if ackChkSum != ACK_UDP_Packet[3]:
-                    print('Checksums do not match. Packet corrupt.')
+                    print('Checksums do NOT match. Packet corrupt.')
                 if ACK_UDP_Packet[1] != seqNum:
-                    print('Sequence Number is incorrect')
-                sock.sendto(UDP_Packet, (UDP_IP, UDP_PORT))  # retransmit packet. end of inner loop.
+                    print('Sequence Number is NOT correct')
+                #  sock.sendto(UDP_Packet, (UDP_IP, UDP_PORT))  # retransmit packet. end of inner loop.
         except socket.timeout:
-            print("socket timed out.  retransmitting...")
+            print("Socket timed out.  Retransmitting...")

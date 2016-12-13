@@ -4,10 +4,10 @@
 
 # Receives data from a client by implementing a reliable data transfer protocol
 
-import binascii
+# import binascii
 import socket
 import struct
-import sys
+# import sys
 import hashlib
 
 UDP_IP = "127.0.0.1"
