@@ -40,7 +40,7 @@ for pl in payloads:
             sock = socket.socket(socket.AF_INET,  # Internet
                          socket.SOCK_DGRAM)  # UDP
             sock.sendto(UDP_Packet, (UDP_IP, UDP_PORT))  # Send the UDP Packet
-            sock.settimeout(9)  # set the timer
+            sock.settimeout(0.009)  # set the timer
 
             ackData, recAddr = sock.recvfrom(1024)  # receive the ACK. buffer size is 1024 bytes.
             ACK_UDP_Packet = UDP_Packet_Data.unpack(ackData)
